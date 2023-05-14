@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>
+      1-3-1-2contains('')包含指定文本的元素empty空元素has()含有指定子元素的元素parent非空元素
+    </title>
+  </head>
+  <body>
+    <div>
+      <span class="red">我是二级span元素</span>
+    </div>
+    <div class="red">我是一级div元素</div>
+    <div><span class="red"></span></div>
+    <div></div>
+    <style></style>
+    <script>
+      $("div:contains('元素')").css("color", "pink"); //匹配包含给定文本的元素
+      $("span:empty").css("border", "10px solid red"); //匹配所有不包含子元素或者文本的空元素
+      $("div:has(.red)").css("text-shadow", "0 0 10px red"); //匹配含有选择器所匹配的元素的元素(后代中有red类名的元素,自己是不算的)
+      $("span:parent").css({ "box-shadow": "0 0 10px lime" }); //匹配含有子元素或者文本的元素(非空元素)
+    </script>
+  </body>
+</html>

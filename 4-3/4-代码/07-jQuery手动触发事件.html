@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>div的内容</div>
+    <br />
+    <button>手动触发div的点击事件</button>
+
+    <br />
+    <br />
+
+    <input type="text" />
+
+    <br />
+    <br />
+
+    <button>trigger触发input的获取焦点事件</button>
+    <button>triggerHandler触发input的获取焦点事件</button>
+
+    <script src="./js/jquery-3.6.4.js"></script>
+    <script>
+      // jQuery手动触发事件
+      // 有些时候，在某些特定的条件下，我们希望某些事件能够自动触发, 比如轮播图自动播放功能跟点击右侧按钮一致。可以利用定时器自动触发右侧按钮点击事件，不必鼠标点击触发。由此 jQuery 为我们提供了两个自动触发事件 trigger() 和 triggerHandler() ;
+
+      // 第一种触发模式
+      // jQuery对象.不带on事件类型()
+
+      // 比如: jQuery对象.click()
+
+      // 第二种触发模式 trigger()
+      // jQuery对象.trigger("不带on事件类型") // 第二种自动触发模式
+
+      // 第三种触发模式 triggerHandler()
+      // jQuery对象.triggerHandler("不带on事件类型") // 第三种自动触发模式
+
+      // 注意: 语法一和语法二触发效果一样, 但是语法三triggerHandler模式不会触发元素的默认行为
+
+      $("div").click(function () {
+        $(this).css({
+          backgroundColor: "skyblue",
+          color: "blue",
+        });
+      });
+      $("div").on("mouseover", function () {
+        console.log("div的mouseover");
+        $(this).css({
+          border: "5px solid red",
+        });
+      });
+      $("div").on("mouseout", function () {
+        console.log("div的mouseout");
+      });
+
+      $("input").focus(function () {
+        $(this).css("backgroundColor", "orange");
+      });
+      $("input").blur(function () {
+        $(this).css("backgroundColor", "");
+      });
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          // 第一种触发模式
+          // jQuery对象.不带on事件类型()
+          $("div").click();
+          $("div").mouseover();
+          $("input").focus();
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          // 第二种触发模式 trigger()
+          // jQuery对象.trigger("不带on事件类型") // 第二种自动触发模式
+          $("div").trigger("click");
+          $("div").trigger("mouseover");
+          $("input").trigger("focus");
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          // 第三种触发模式 triggerHandler()
+          // jQuery对象.triggerHandler("不带on事件类型") // 第三种自动触发模式
+          // 注意: 语法一和语法二触发效果一样, 但是语法三triggerHandler模式"不会触发元素的默认行为"
+          $("div").triggerHandler("click");
+          $("div").triggerHandler("mouseover");
+          $("input").triggerHandler("focus");
+        });
+    </script>
+  </body>
+</html>

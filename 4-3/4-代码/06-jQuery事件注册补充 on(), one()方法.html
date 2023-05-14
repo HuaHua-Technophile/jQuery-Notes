@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background: pink;
+      }
+
+      p {
+        width: 150px;
+        height: 150px;
+        background: orange;
+      }
+
+      ul {
+        background: pink;
+      }
+
+      ul li {
+        background: skyblue;
+      }
+
+      h1 {
+        width: 120px;
+        height: 120px;
+        background: lightgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>div内容</div>
+    <p>p段落内容</p>
+
+    <br />
+    <br />
+    <input type="text" />
+
+    <ul>
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>赵六</li>
+      <li>孙七</li>
+    </ul>
+
+    <button>添加新的li</button>
+
+    <h1>标题11111</h1>
+
+    <script src="js/jquery-3.6.4.js"></script>
+    <script>
+      // 我们之前学习的jq绑定事件语法
+      // jQuery对象.不带on事件类型( function(){} )   无法绑定某些事件比如input事件,   无法给动态新增创建的元素绑定事件
+
+      // 使用jQuery对象.on()方法绑定事件
+      // jQuery对象.on("不带on事件类型" [,后代或者子元素对应的选择器] ,function(){} )
+
+      $("div").click(function () {
+        console.log("div的click事件");
+      });
+      $("div").mouseover(function () {
+        console.log("div的mouseover事件");
+      });
+      $("div").mouseout(function () {
+        console.log("div的mouseout事件");
+      });
+
+      /* $("p").on("click", function () {
+            console.log("p的click事件1111");
+        });
+        $("p").on("click", function () {
+            console.log("p的click事件2222222");
+        });
+        $("p").on("mouseover", function () {
+            console.log("p的mouseover事件");
+        });
+        $("p").on("mouseout", function () {
+            console.log("p的mouseout事件");
+        }); */
+      // on()方法优势1:可以绑定多个事件,多个事件处理程序,使用"对象的形式"写事件名以及对应的事件处理程序
+      /* $("p").on({
+            "click": function () {
+                console.log("p的click事件111");
+            },
+            "click": function () {
+                console.log("p的click事件2222");
+            },
+            "mouseover": function () {
+                console.log("p的mouseover事件");
+            },
+            "mouseout": function () {
+                console.log("p的mouseout事件");
+            }
+        }) */
+
+      // on()方法优势2: 如果事件处理程序相同, 使用"空格分隔"的事件类型
+      $("p").on("click mouseover mouseout", function () {
+        console.log("p的click事件或者mouseover事件或者mouseout事件");
+      });
+
+      // on() 方法优势3:可以事件委派操作 。事件委派的定义就是，把原来加给子元素身上的事件绑定在父元素身上，就是把事件委派给父元素
+      $("button")
+        .eq(0)
+        .click(function () {
+          // 添加新的li
+          var $newLi = $("<li>王八</li>");
+          $("ul").append($newLi);
+        });
+
+      // 事件委托(事件委派) 给父辈元素绑定事件 可以解决动态添加元素绑定事件问题
+      $("ul").on("click", "li", function () {
+        console.log("this=>", this);
+        $(this).css("color", "red");
+        console.log($(this).text());
+      });
+
+      $("input").on("input", function () {
+        console.log($(this).val());
+      });
+
+      // 如果事件仅想触发一次,我们可以使用one()方式绑定  one()方式绑定语法跟on()一样
+      // jQuery对象.one("不带on事件类型",  [,后代或者子元素对应的选择器] , function(){} );
+      $("h1").one("click", function () {
+        console.log("h1的click事件");
+      });
+    </script>
+  </body>
+</html>

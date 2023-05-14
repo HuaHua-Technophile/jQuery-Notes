@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+    <li class="big">文本节点</li>
+    <li>文本节点</li>
+    <li>big文本节点</li>
+    <!-- 这是一个注释节点,可被 -->
+    <li>文本节点</li>
+    <li>文本节点</li>
+    <script>
+      $("li").slice(1, 3).css("color", "red");
+      /*start:开始选取子集的位置。索引从0开始.如果是负数，则可以从集合的尾部开始选起。
+            end:结束选取的位置(不包含)，如果不指定则start之后的所有元素*/
+      $("li").filter(':contains("5")').css("text-shadow", "0 0 8px red"); //filter()筛选出与指定表达式匹配的元素集合。可用逗号分隔多个表达式
+      $("li").filter(':contains("big") , .big').css("font-size", "50px");
+      console.log($("li").filter(':contains("5")').end()); //回到filter(':contains("5")')之前,也就是$('li')
+      /*.end()选择器回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+      如果之前没有破坏性操作，则返回一个空集。所谓的"破坏性"就是指任何改变所匹配的jQuery元素的操作。这包括在 Traversing 中任何返回一个jQuery对象的函数--'add', 'andSelf', 'children', 'filter', 'find', 'map', 'next', 'nextAll', 'not', 'parent', 'parents', 'prev', 'prevAll', 'siblings' and 'slice'--再加上 Manipulation 中的 'clone'。*/
+      console.log(
+        $("li").contents()
+      ); /*查找匹配元素内部所有的子节点(包括文本节点,不含注释节点与换行空节点)*/
+    </script>
+  </body>
+</html>

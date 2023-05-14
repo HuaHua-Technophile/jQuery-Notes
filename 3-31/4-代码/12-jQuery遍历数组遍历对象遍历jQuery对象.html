@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="background-color: pink">div1</div>
+    <div style="background-color: skyblue">div2</div>
+    <div style="background-color: lightgreen">div3</div>
+    <div style="background-color: aqua">div4</div>
+    <div style="background-color: orange">div5</div>
+    <div style="background-color: purple">div6</div>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery提供了$.each()方法,可以用于遍历数组或者对象或者jQuery对象
+      // $.each( 数组或者对象或者jQuery对象,  function(参数1,参数2){})
+      var arr = [50, "abc", true, 96, 32];
+      $.each(arr, function (index, item) {
+        console.log(index, item);
+      });
+      console.log("");
+      console.log("");
+
+      var obj = {
+        id: 1,
+        uname: "zhangsan",
+        age: 23,
+        sex: "男",
+      };
+      $.each(obj, function (index, item) {
+        console.log(index, item);
+      });
+      console.log("");
+      console.log("");
+
+      $.each($("div"), function (index, domEle) {
+        // console.log(index, domEle);
+        console.log($(domEle).css("background-color"));
+        console.log($(domEle).html());
+        console.log($(domEle).text());
+        console.log("");
+      });
+    </script>
+  </body>
+</html>

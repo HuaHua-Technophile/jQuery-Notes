@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 500px;
+        height: 100px;
+        background: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="div1" id="abc" data-index="10">div的内容</div>
+    <br />
+
+    <input type="checkbox" checked="checked" />写代码
+
+    <br />
+    <br />
+
+    <button>获取自带属性</button>
+    <button>设置自带属性</button>
+    <button>获取自定义属性</button>
+    <button>设置自定义属性</button>
+    <button>删除属性</button>
+    <br />
+    <br />
+
+    <button>获取复选框的选中状态</button>
+    <button>设置复选框的选中状态</button>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery属性操作主要有如下两个方法
+      // jQuery对象.prop(); 注意： prop() 除了普通属性(自带属性)操作，更适合操作表单属性：disabled / checked / selected 等。  也就是自身属性
+      // jQuery对象.attr(); 注意： attr() 除了普通属性(自带属性)操作，也可以操作自定义属性,但是更适合操作自定义属性。
+      // jQuery对象.removeAttr("自带属性名或者自定义属性名")  删除指定的自带属性或者自定义属性
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          console.log($("div").prop("class"));
+          console.log($("div").prop("id"));
+          console.log($("div").prop("data-index"));
+          console.log($("input").prop("checked"));
+          console.log("");
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          $("div").prop("class", "myDiv");
+          $("div").prop("id", "qwe");
+          $("div").prop("data-index", 20);
+          $("div").prop("data-username", "zhangsan");
+          $("input").prop("checked", false);
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          console.log($("div").attr("class"));
+          console.log($("div").attr("id"));
+          console.log($("div").attr("data-index"));
+          console.log($("input").attr("checked"));
+          console.log("");
+        });
+
+      $("button")
+        .eq(3)
+        .click(function () {
+          $("div").attr("class", "myDiv");
+          $("div").attr("id", "qwe");
+          $("div").attr("data-index", 20);
+          $("div").attr("data-username", "zhangsan");
+          $("input").attr("checked", false);
+        });
+
+      $("button")
+        .eq(4)
+        .click(function () {
+          $("div").removeAttr("class");
+          $("div").removeAttr("data-index");
+        });
+
+      $("button")
+        .eq(5)
+        .click(function () {
+          console.log($("input").prop("checked"));
+          console.log($("input").attr("checked"));
+        });
+
+      $("button")
+        .eq(6)
+        .click(function () {
+          $("input").prop("checked", false);
+          // $("input").attr("checked", false);
+        });
+    </script>
+  </body>
+</html>

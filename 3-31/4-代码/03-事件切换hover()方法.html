@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .nav {
+        margin: 100px;
+      }
+
+      .nav > li {
+        position: relative;
+        float: left;
+        width: 80px;
+        height: 41px;
+        text-align: center;
+      }
+
+      .nav li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 41px;
+        color: #333;
+      }
+
+      .nav > li > a:hover {
+        background-color: #eee;
+      }
+
+      .nav ul {
+        display: none;
+        position: absolute;
+        top: 41px;
+        left: 0;
+        width: 100%;
+        border-left: 1px solid #fecc5b;
+        border-right: 1px solid #fecc5b;
+      }
+
+      .nav ul li {
+        border-bottom: 1px solid #fecc5b;
+      }
+
+      .nav ul li a:hover {
+        background-color: #fff5da;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <style>
+      div {
+        width: 150px;
+        height: 150px;
+        background: skyblue;
+      }
+    </style>
+    <div>div的内容</div>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery对象.hover(鼠标移到元素上要触发的函数 , 鼠标移出元素要触发的函数);
+      /* $("div").mouseover(function () {
+            console.log("div的mouseover1111");
+        });
+        $("div").mouseout(function () {
+            console.log("div的mouseout1111");
+        }); */
+
+      /* $("div").hover(function () {
+            console.log("div的mouseover2222");
+        }, function () {
+            console.log("div的mouseout2222");
+        }); */
+
+      // jQuery对象.hover(鼠标移到元素上或者移出元素要触发的函数);
+      /* $("div").hover(function () {
+            console.log("嘻嘻嘻嘻");
+        }); */
+
+      /* $(".nav > li").mouseover(function () {
+            $(this).find("ul").show();
+        });
+
+        $(".nav > li").mouseout(function () {
+            $(this).find("ul").hide();
+        }); */
+
+      /* $(".nav > li").hover(function () {
+            $(this).find("ul").show();
+        }, function () {
+            $(this).find("ul").hide();
+        }); */
+
+      $('.nav > li').hover(function () {
+        $(this).find('ul').toggle();
+      });
+
+      /* $(".nav > li").hover(function () {
+            // $(this).find("ul").slideToggle();
+            $(this).find("ul").fadeToggle();
+        }); */
+    </script>
+  </body>
+</html>

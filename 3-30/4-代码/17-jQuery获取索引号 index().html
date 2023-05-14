@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      li {
+        background: pink;
+        margin-bottom: 10px;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>h1h1h1</h1>
+    <h2>h2h2h2</h2>
+    <ul>
+      <li id="foo">foo</li>
+      <li id="bar">bar</li>
+      <span style="background: orange">span1</span>
+      <span style="background: orange">span2</span>
+      <i>i</i>
+      <b>b</b>
+      <li>空</li>
+      <li>空</li>
+      <li>空</li>
+      <li id="baz">baz</li>
+      <li class="abc">abc</li>
+      <li class="abc">abc</li>
+      <li class="abc">abc</li>
+    </ul>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery获取索引号 index()
+      // jQuery对象.index( [selector] )
+      // 搜索匹配的元素，并返回相应元素的索引值，从0开始计数。​
+      // 如果不给 .index() 方法传递参数，那么返回值就是这个jQuery对象集合中第一个元素相对于其同辈元素的位置。​
+      // 如果参数是DOM元素或者jQuery对象，那么返回值就是传递的元素相对于原先集合的位置。
+
+      // 注意细节:
+      // 1、❤❤❤不传递参数,返回这个元素在同辈(所有类型的兄弟元素)中的索引位置( 不传递参数这种方式用的最多 )
+      // 2、传递一个DOM对象,返回这个对象在原先集合中的索引位置
+      // 3、传递一个jQuery对象,返回这个对象在原先集合中的索引位置
+      // 4、传递一组jQuery对象,返回这组对象中第一个元素在原先集合中的索引位置
+      $("ul li").click(function () {
+        console.log($(this).index());
+      });
+
+      console.log($("ul"));
+      console.log($("ul").index());
+      console.log($("ul").index(document.getElementById("bar")));
+      console.log("");
+      console.log($("ul li").index(document.getElementById("baz")));
+      console.log("");
+      console.log($("ul li").index($("#baz")));
+      console.log("");
+      console.log($("ul li").index($(".abc")));
+    </script>
+  </body>
+</html>

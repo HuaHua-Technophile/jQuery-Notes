@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <button>发送GET请求</button>
+    <button>发送POST请求(传统表单格式数据)</button>
+    <button>发送POST请求(JSON字符串格式数据)</button>
+
+    <script>
+      // get请求和post请求的区别
+
+      // 面试题:  https://interview.html5.wiki/compound.html#_5-get-%E5%92%8C-post-%E7%9A%84%E5%8C%BA%E5%88%AB
+
+      // 我们大概要记住以下几点：
+      // 1. 浏览器在回退时，get 不会重新请求，但是post会重新请求。【重要】
+      // 2. get请求会被浏览器主动缓存，而post不会。【重要】
+      // 3. get请求的参数，会报保留在浏览器的历史记录里，而post不会。做业务时要注意。为了防止CSRF攻击，很多公司把get统一改成了post。
+      // 4. get请求在url中传递的参数有大小限制，基本是2kb`，不同的浏览器略有不同。而 post 没有注意。
+      // 5. get的参数是直接暴露在url上的，相对不安全。而post是放在请求体中的。
+
+      // 建议：get方式的安全性较post方式要差些，包含机密信息的话，建议用post数据提交方式；在做数据查询时，建议用get方式；而在做数据添加、修改或删除时，建议用post方式；
+
+      // 接口地址:  https://www.alapi.cn/
+
+      var btns = document.querySelectorAll("button");
+      btns[0].onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          "https://v2.alapi.cn/api/star?star=leo&token=lJLxHK2NrnPVri457AaK"
+        );
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            // console.log(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
+            console.log(res);
+            var data = res.data;
+            console.log(data);
+          }
+        };
+      };
+      btns[1].onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://v2.alapi.cn/api/star");
+        // 注意: POST请求在传递参数的时候,还需要在请求发送之前设置请求头信息
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+
+        // POST传递参数是通过xhr.send(body)方法传递body数据体(在 XHR 请求中要发送的数据体)
+        // 并且参数格式需要为   "foo=bar&lorem=ipsum"的字符串   这种方式也可以叫传统表单格式参数
+        xhr.send("star=leo&token=lJLxHK2NrnPVri457AaK");
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            // console.log(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
+            console.log(res);
+            var data = res.data;
+            console.log(data);
+          }
+        };
+      };
+
+      btns[2].onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://v2.alapi.cn/api/star");
+        // 注意: POST请求在传递参数的时候,还需要在请求发送之前设置请求头信息
+        xhr.setRequestHeader("Content-type", "application/json");
+
+        // POST传递参数是通过xhr.send(body)方法传递body数据体(在 XHR 请求中要发送的数据体)
+        // 并且参数格式需要为   "foo=bar&lorem=ipsum"的字符串   这种方式也可以叫传统表单格式参数
+        xhr.send(
+          JSON.stringify({
+            star: "leo",
+            token: "lJLxHK2NrnPVri457AaK",
+          })
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            // console.log(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
+            console.log(res);
+            var data = res.data;
+            console.log(data);
+          }
+        };
+      };
+    </script>
+  </body>
+</html>

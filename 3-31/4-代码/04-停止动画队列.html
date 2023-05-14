@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .nav {
+        margin: 100px;
+      }
+
+      .nav > li {
+        position: relative;
+        float: left;
+        width: 80px;
+        height: 41px;
+        text-align: center;
+      }
+
+      .nav li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 41px;
+        color: #333;
+      }
+
+      .nav > li > a:hover {
+        background-color: #eee;
+      }
+
+      .nav ul {
+        display: none;
+        position: absolute;
+        top: 41px;
+        left: 0;
+        width: 100%;
+        border-left: 1px solid #fecc5b;
+        border-right: 1px solid #fecc5b;
+      }
+
+      .nav ul li {
+        border-bottom: 1px solid #fecc5b;
+      }
+
+      .nav ul li a:hover {
+        background-color: #fff5da;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li>
+            <a href="">私信</a>
+          </li>
+          <li>
+            <a href="">评论</a>
+          </li>
+          <li>
+            <a href="">@我</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      $('.nav > li').hover(function () {
+        // jQuery中的动画如果同时存在多个需要执行, 那么这些动画就会排队形成队列, 一个一个的执行
+
+        // jQuery对象.stop()停止所有在指定元素上正在运行的动画  一般放在动画方法的前面
+        // $(this).find("ul").slideToggle(800);
+        $(this).find('ul').stop().slideToggle(800);
+      });
+    </script>
+  </body>
+</html>

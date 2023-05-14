@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      ul {
+        border: 2px solid red;
+      }
+
+      .content {
+        border: 2px solid blue;
+        padding: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <li>
+        苹果
+        <span>span</span>
+        <b>bbb</b>
+        <ol>
+          <li>iphoneX</li>
+          <li>iphone11</li>
+          <li>iphone12</li>
+          <li>iphone13</li>
+          <li>iphone14</li>
+        </ol>
+      </li>
+      <li>哈密瓜</li>
+      <li>冬瓜</li>
+    </ul>
+
+    <div class="content">content的内容</div>
+    <br />
+    <br />
+    <input type="text" value="张三" />
+    <br />
+    <br />
+
+    <button>创建元素(内部添加)</button>
+    <button>创建元素(外部添加)</button>
+    <button>删除元素</button>
+    <button>清空标签内容</button>
+    <button>克隆元素clone()</button>
+    <button>克隆元素clone(true)</button>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // 创建元素  创建完毕以后,方法会返回jQuery对象
+      // $("<标签名 标签属性名='标签属性值'>标签内容</标签名>")
+      // $("<标签名 标签属性名='标签属性值'/>")
+
+      // 内部添加
+      // jQuery对象.append("内容"); 把内容放入匹配元素内部最后面,类似原生中的appendChild
+      // jQuery对象.prepend("内容");把内容放入匹配元素内部最前面
+
+      // 外部添加
+      // jQuery对象.before("内容") 把内容放入目标元素前面
+      // jQuery对象.after("内容") 把内容放入目标元素后面
+
+      // 注意:
+      // ①内部添加元素,生成之后,它们是父子关系
+      // ②外部添加元素,生成之后,它们是兄弟关系
+
+      // 删除元素
+      // jQuery对象.remove() // 删除指定的jQuery元素本身
+
+      // 清空标签内容
+      // jQuery对象.empty() // 删除指定的jQuery元素集合中所有的子节点
+      // jQuery对象.html("") // 清空指定的jQuery元素内容
+      // jQuery对象.text("") // 清空指定的jQuery元素内容
+      // jQuery对象.val("") // 清空指定的表单元素value值
+
+      // 克隆元素
+      /* 
+            jQuery对象.clone([true])  谁调用这个方法就会将当前的元素进行克隆一份
+
+            参数说明：
+            true：可缺省的，如果带true这个参数 
+            表示克隆元素的本身的同时还会将该元素身上绑定的事件也会克隆.
+
+            但是如果没有带true这个参数或者参数为false，
+            它只会克隆元素本身不会克隆其事件。
+        */
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          var $newLi1 = $("<li>");
+          $("ul").append($newLi1);
+
+          var $newLi2 = $("<li></li>");
+          $("ul").append($newLi2);
+
+          var $newLi3 = $("<li>西瓜</li>");
+          $("ul").append($newLi3);
+
+          var $newLi4 = $("<li></li>");
+          $newLi4.text("南瓜");
+          $newLi4.css("color", "red");
+          $newLi4.click(function () {
+            $(this).css("backgroundColor", "skyblue");
+          });
+          $("ul").prepend($newLi4);
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          var $newInput1 = $("<input>");
+          $(".content").before($newInput1);
+          var $newInput2 = $("<input></input>");
+          $(".content").after($newInput2);
+          var $newInput3 = $("<input type='radio' value='男'/>");
+          $(".content").after($newInput3);
+          var $newH = $("<h2>h2h2h2</h2><h3>h3h3h3</h3>");
+          $(".content").after($newH);
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          // $("ul li").eq(0).remove();
+          $("ul li:first").remove();
+        });
+
+      $("button")
+        .eq(3)
+        .click(function () {
+          // $("ul").empty();
+          // $(".content").empty();
+          // $("input").empty();
+
+          $("ul").html("");
+          $(".content").text("");
+          $("input").val("");
+        });
+
+      $("ul > li").click(function () {
+        console.log("li的click事件");
+      });
+      $("ul > li").hover(
+        function () {
+          console.log("li的mouseover事件");
+        },
+        function () {
+          console.log("li的mouseout事件");
+        }
+      );
+
+      $("button")
+        .eq(4)
+        .click(function () {
+          var $cloneEle = $("ul > li:first").clone();
+          $("ul").prepend($cloneEle);
+        });
+
+      $("button")
+        .eq(5)
+        .click(function () {
+          var $cloneEle = $("ul > li:first").clone(true);
+          $("ul").append($cloneEle);
+        });
+    </script>
+  </body>
+</html>

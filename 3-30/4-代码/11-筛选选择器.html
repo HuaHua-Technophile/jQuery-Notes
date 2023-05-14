@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <ul>
+      <li>ul多个里面筛选几个</li>
+      <li>ul多个里面筛选几个</li>
+      <li>ul多个里面筛选几个</li>
+      <li>ul多个里面筛选几个</li>
+      <li>ul多个里面筛选几个</li>
+      <li>ul多个里面筛选几个</li>
+    </ul>
+    <ol>
+      <li>ol多个里面筛选几个</li>
+      <li>ol多个里面筛选几个</li>
+      <li>ol多个里面筛选几个</li>
+      <li>ol多个里面筛选几个</li>
+      <li>ol多个里面筛选几个</li>
+      <li>ol多个里面筛选几个</li>
+    </ol>
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      /* 
+        筛选选择器
+        筛选选择器，顾名思义就是在所有的选项中选择满足条件的进行筛选选择。
+        常见如下 :
+            语法 描述 举例
+            :first 获取第一个li元素 $("li:first")
+            :last 获取最后一个li元素 $("li:last")
+            ❤:eq(index) 获取索引号为2的li元素,索引号index从0开始 $("li:eq(2)")
+            :odd 获取索引号为奇数的li元素,索引号index从0开始 $("li:odd")
+            :even 获取索引号为偶数的li元素,索引号index从0开始 $("li:even")
+        */
+
+      console.log($("li"));
+      console.log($("ul li"));
+      console.log($("ul li:first-child"));
+      console.log($("ul li:last-child"));
+      console.log($("ul li:nth-child(2)"));
+      console.log($("ul li:nth-child(even)"));
+      console.log($("ul li:nth-child(odd)"));
+      console.log("");
+      console.log("");
+      $("ul li:first").css("color", "red");
+      $("ul li:last").css("color", "blue");
+      console.log("");
+      console.log("");
+      $("ul li:eq(4)").css("background", "lightgreen");
+      // eq选择器中可以使用负数, -1表示倒数第1个  -n表示倒数第n个
+      $("ul li:eq(-4)").css("background", "pink");
+      console.log("");
+      console.log("");
+
+      $("ul li:odd").css("font-weight", "bold");
+      $("ul li:even").css("font-size", "30px");
+    </script>
+  </body>
+</html>

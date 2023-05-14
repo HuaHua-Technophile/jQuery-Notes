@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 120px;
+        height: 120px;
+        background: pink;
+        margin-bottom: 10px;
+      }
+
+      p {
+        width: 80px;
+        height: 80px;
+        background: skyblue;
+      }
+    </style>
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery的入口函数类似于document对象DOMContentLoaded的事件  DOM结构加载完毕就会执行
+
+      // $("带符号的CSS选择器")  获取符合CSS选择器的所有jQuery对象  类似document.querySelectorAll()
+
+      // jQuery的入口函数写法有两种
+      // 第一种 推荐
+      // $( function(){} );
+      $(function () {
+        console.log("jQuery的入口函数写法第一种");
+        console.log($("div"));
+        console.log($("p"));
+      });
+
+      // 第二种
+      // $( document ).ready( function(){} );
+      $(document).ready(function () {
+        console.log("jQuery的入口函数写法第二种");
+        console.log($(".one"));
+        console.log($("#two"));
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="one">div</div>
+    <div>div</div>
+    <div>div</div>
+    <p id="two">ppp</p>
+  </body>
+</html>

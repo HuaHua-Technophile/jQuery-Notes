@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 150px;
+        height: 150px;
+        background: orange;
+      }
+
+      p {
+        width: 120px;
+        height: 120px;
+        background: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>div的内容</div>
+    <p>p段落的内容</p>
+
+    <ul id="myUl">
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>赵六</li>
+      <li>孙七</li>
+    </ul>
+
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery 对象和 DOM 对象的区别与转换
+
+      // jQuery 对象和 DOM 对象的区别
+      // 1. 通过$() 或者 调用了jQuery提供的api方法(如果api方法返回的是jQuery对象) 那么得到的对象都是jQuery对象
+      // 2. 通过相关获取dom对象的方法,得到的就是DOM对象
+      // 3. jQuery对象只能使用jQuery提供的api方法和属性
+      // 4. DOM对象只能使用DOM提供的api方法和属性
+
+      console.log($("div"));
+      console.log($("div").width(300));
+      console.log(document.querySelector("div"));
+      console.log(document.getElementsByTagName("p")[0]);
+      console.log("");
+      console.log("");
+
+      // 建议: 我们可以在jQuery对象的变量名前面加一个$符号  可以跟普通的对象或者DOM对象区分
+      var $div = $("div");
+      console.log($div);
+      $div.height(280);
+      $div.css("color", "green");
+      $div.text("呵呵");
+      // $div.style.color = "red";// 报错
+      // $div.innerText = "哈哈哈";// 不报错,但是没有效果
+      console.log("");
+      console.log("");
+      console.log("");
+
+      var objP = document.getElementsByTagName("p")[0];
+      console.log(objP);
+      objP.innerText = "嘻嘻嘻嘻";
+      objP.style.color = "purple";
+      // objP.css("color", "red");// 报错
+      // objP.text("呵呵");// 报错
+
+      console.log("");
+      console.log("");
+
+      // jQuery 对象和 DOM 对象的转换  转换成什么对象以后,就可以使用对应对象的方法和属性了
+      // jQuery对象转成DOM对象方式  索引号从0开始
+      // 方式1. 推荐 jQuery对象[索引号]
+      // 方式2. jQuery对象.get(索引号)
+
+      console.log($("ul li"));
+      console.log($("ul li")[0]);
+      console.log($("ul li").get(1));
+      $("ul li")[0].style.color = "red";
+      $("ul li").get(1).style.color = "green";
+      console.log("");
+      console.log("");
+
+      // DOM对象转成jQuery对象   $( DOM对象 )
+      var objUl = document.getElementById("myUl");
+      console.log(objUl);
+      console.log($(objUl));
+      $(objUl).css("border", "2px solid blue");
+      console.log("");
+      console.log("");
+
+      // jQuery绑定事件, 大部分可以使用如下语法
+      // jQuery对象.不带on事件类型( function(){} )
+
+      // jQuery中会有隐式迭代, 意思就是如果发现jQuery对象不是单个,是一组, jQuery会帮我们遍历循环
+      $("button").click(function (e) {
+        // 因为此种方式绑定以后, 函数内部this对象指向的对象是DOM对象, 所以不能jQuery提供的api方法和属性
+        console.log("this=>", this);
+        console.log("hello");
+        this.style.color = "green";
+        // this.css("background", "skyblue");// 报错, 因为this是dom对象
+        $(this).css("background", "skyblue");
+        console.log("");
+        console.log("");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      input {
+        display: block;
+        width: 600px;
+        height: 50px;
+        padding: 0 20px;
+        font-size: 20px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      .message {
+        width: 600px;
+        margin: 0px auto;
+        font-size: 30px;
+        background-color: #ccc;
+        padding: 10px 20px;
+        color: red;
+        height: 30px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" placeholder="请输入.." class="input" />
+    <!-- <div class="message">11111</div> -->
+
+    <script>
+      // 获取dom对象
+      var objInput = document.querySelector(".input");
+      // 绑定输入内容改变事件(change, input, keyup这三个事件)
+
+      // 函数防抖: 事件尽快触发或者函数尽管调用, 但是里面代码, 需要冷静(事件不在持续触发,函数不在持续调用)以后才执行 例如: 王者荣耀不断按回程键
+      // 函数节流: 事件尽快触发或者函数尽管调用, 但是规定时间内,只能执行一次代码  例如: 王者荣耀释放技能,释放完毕以后,会进入冷却期
+      // 函数防抖和函数节流,稀释函数的高频率调用
+
+      function mydebounce(func, wait) {
+        var timeout;
+        var _this;
+        var args;
+        return function () {
+          _this = this;
+          args = arguments;
+
+          window.clearTimeout(timeout);
+          timeout = setTimeout(function () {
+            func.apply(_this, args);
+          }, wait);
+        };
+      }
+
+      objInput.oninput = mydebounce(function () {
+        // 获取当前文本框的value属性值
+        var inputVal = this.value;
+        // 判断输入内容是否为空
+        if (inputVal.trim().length === 0) {
+          return;
+        }
+        // 动态创建div元素
+        var newDiv = document.createElement("div");
+        // 设置div的类名以及标签内容
+        newDiv.className = "message";
+        newDiv.innerText = inputVal;
+        // 把div添加到body中
+        document.body.appendChild(newDiv);
+        // 清空文本框的值
+        this.value = "";
+      }, 400);
+    </script>
+  </body>
+</html>

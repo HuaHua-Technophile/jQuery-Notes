@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <ol>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li class="item">我是ol 里面具有.item类的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+    </ol>
+
+    <div style="border: 3px solid orange">
+      <p>我是ppppp</p>
+      <p>我是ppppp</p>
+      <h1>我是h1h1h1h1h1h1</h1>
+      <span>我是span</span>
+      <h2>我是h2h2h2h2h2</h2>
+    </div>
+
+    <ul>
+      <li>我是ul 的li</li>
+      <li>我是ul 的li</li>
+      <li>我是ul 的li</li>
+      <li>我是ul 的li</li>
+      <li>我是ul 的li</li>
+      <li>我是ul 的li</li>
+    </ul>
+
+    <div class="current">我有current</div>
+    <div>我没有current</div>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // ❤siblings( [selector] ) 查找所有兄弟节点，不包括自己本身
+      /* console.log($(".item"));
+        console.log($(".item").siblings());
+        $("div span").css("color", "red");
+        $("div span").siblings().css("border", "2px solid blue");
+        $("div span").siblings("p").css("background", "tomato");
+        console.log("");
+        console.log(""); */
+
+      // nextAll( [selector] ) 查找当前元素之后所有的同辈(兄弟)元素
+      // $("div h1").css("color", "blue");
+      // $("div h1").nextAll().css("border", "2px solid red");
+
+      // prevAll( [selector] ) 查找当前元素之前所有的同辈(兄弟)元素
+      /* $("div span").css("color", "red");
+        $("div span").prevAll().css("background", "lightgreen");
+        $("div span").prevAll("p").css("font-style", "italic");
+        console.log("");
+        console.log(""); */
+
+      // hasClass( "类名" ) 检查当前的元素是否含有某个特定的类,如果有,则返回true
+      /* console.log($("ol li:nth-child(3)"));
+        console.log($("ol li:nth-child(3)").hasClass("item"));
+        console.log($("ol li:eq(3)"));
+        console.log($("ol li:eq(3)").hasClass("item"));
+        console.log("");
+        console.log(""); */
+
+      // ❤eq( index ) 找index个元素 index从0开始, 并且n支持负数（表示从后面查找）
+      var index = 4;
+      $("ol li").eq(index).css("color", "red");
+      $("ol li:eq(" + index + ")").css("border", "2px solid purple");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 150px;
+        height: 120px;
+        background-color: pink;
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="font-size: 30px; text-align: center">div内容</div>
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery样式操作
+      // jQuery中常用的样式操作有两种：css() 和 操作类类方法
+
+      // 方法1: css方法
+      // jQuery 可以使用 css 方法来获取与设置元素样式
+
+      // 1.参数只写属性名，则是返回属性值
+      // 语法
+      // jQuery对象.css("css属性名")
+
+      // 获取元素的单个color属性值
+      console.log($("div").css("color"));
+      console.log($("div").css("font-size"));
+      console.log($("div").css("fontSize"));
+      console.log($("div").css("text-align"));
+      console.log($("div").css("textAlign"));
+      console.log("");
+      console.log("");
+
+      // 获取元素的多个css属性样式值
+      // 语法
+      // jQuery对象.css(["css属性名1","css属性名2","css属性名3"...])
+      console.log($("div").css(["color", "font-size", "textAlign"]));
+      console.log("");
+      console.log("");
+
+      // 2. 参数是属性名,属性值,逗号分隔,是设置一组样式,属性名必须加引号,属性值如果是数字可以不用跟单位和引号
+      // 设置单个CSS属性语法
+      // jQuery对象.css("css属性名", "css属性值")
+      $("div").css("width", 300);
+      $("div").css("height", "200px");
+      $("div").css("fontSize", "20px");
+
+      // 3. 参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开,属性名必须加引号，如果是数字可以不用跟单位和引号;
+      // 设置多个CSS属性语法
+      /* jQuery对象.css( {
+            "css属性名1": "css属性值1", 
+            "css属性名2": "css属性值2", 
+            "css属性名3": "css属性值3", 
+            ...
+        } ) */
+      $("div").css({
+        border: "5px solid green",
+        "font-style": "italic",
+        fontWeight: "bold",
+      });
+      // 注意: 如果是复合属性可以采取驼峰命名法,比如font-size写成fontSize;如果属性值不是数字，则需要加引号
+    </script>
+  </body>
+</html>

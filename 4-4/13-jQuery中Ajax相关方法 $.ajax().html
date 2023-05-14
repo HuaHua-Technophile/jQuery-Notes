@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <button>$.ajax()发送get请求</button>
+    <button>$.ajax()发送读取文档文件</button>
+    <button>$.ajax()发送读取json文件</button>
+    <br />
+    <br />
+    <button>$.ajax()发送post请求 表单格式数据</button>
+    <button>$.ajax()发送post请求 json字符串数据</button>
+    <br />
+    <br />
+    <button>$.ajax()发送jsonp请求</button>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      // 语法
+      /*  $.ajax( {
+             url:请求地址,
+             type:请求方式 GET POST 默认取值GET,
+             data:请求数据,
+
+             success:function(){
+                 请求成功后的回调函数
+             },
+
+             error:function(){
+                 请求失败时调用此函数
+             },
+
+             beforeSend:function(){
+                 发送请求前会调用beforeSend()方法, 如果返回false可以取消本次ajax请求。
+             },
+
+
+             contentType:发送信息至服务器时内容编码类型,默认取值"application/x-www-form-urlencoded"
+
+             dataType:预期服务器返回的数据类型,取值"jsonp": JSONP 格式。
+
+             jsonp:  JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
+
+             jsonpCallback: 为jsonp请求指定一个回调函数名
+         } ) */
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          $.ajax({
+            type: "GET",
+            url: "https://api.uomg.com/api/rand.qinghua",
+            success: function (data) {
+              console.log(data);
+            },
+            error: function (err) {
+              console.log("err=>", err);
+              console.log("哎呀,发送错误了");
+            },
+            beforeSend: function () {
+              console.log("beforeSend方法被调用了");
+              // 如果beforeSend()方法里面返回了false,那么本次ajax请求将不发送
+              return false;
+            },
+          });
+
+          /* $.ajax({
+                url: "https://v2.alapi.cn/api/star?star=leo&token=lJLxHK2NrnPVri457AaK",
+                success: function (data) {
+                    console.log(data);
+                }
+            }); */
+
+          /* $.ajax({
+                url: "https://v2.alapi.cn/api/star",
+                data: "star=leo&token=lJLxHK2NrnPVri457AaK",
+                success: function (data) {
+                    console.log(data);
+                }
+            }); */
+
+          /* $.ajax({
+                url: "https://v2.alapi.cn/api/star?star=leo",
+                data: "token=lJLxHK2NrnPVri457AaK",
+                success: function (data) {
+                    console.log(data);
+                }
+            }); */
+
+          /* $.ajax({
+                url: "https://v2.alapi.cn/api/star?star=leo",
+                data: {
+                    token: "lJLxHK2NrnPVri457AaK",
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            }); */
+
+          $.ajax({
+            url: "https://v2.alapi.cn/api/star",
+            data: {
+              star: "leo",
+              token: "lJLxHK2NrnPVri457AaK",
+            },
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          $.ajax({
+            type: "GET",
+            url: "./a.txt",
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          $.ajax({
+            type: "GET",
+            url: "./herolist.json",
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        });
+
+      $("button")
+        .eq(3)
+        .click(function () {
+          $.ajax({
+            type: "POST",
+            url: "https://v2.alapi.cn/api/star",
+            data: {
+              star: "leo",
+              token: "lJLxHK2NrnPVri457AaK",
+            },
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        });
+
+      $("button")
+        .eq(4)
+        .click(function () {
+          $.ajax({
+            type: "POST",
+            url: "https://v2.alapi.cn/api/star",
+            // 如果需要使用post传递json格式字符串数据,数据需要使用json字符串,另外还需要设置contentType属性
+            contentType: "application/json",
+            data: JSON.stringify({
+              star: "leo",
+              token: "lJLxHK2NrnPVri457AaK",
+            }),
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        });
+
+      function myabc(data) {
+        console.log("myabc函数");
+        console.log("data=>", data);
+      }
+      $("button")
+        .eq(5)
+        .click(function () {
+          /* $.ajax({
+                type: "GET",
+                url: "https://wis.qq.com/weather/common?source=pc",
+                data: {
+                    weather_type: "forecast_1h",
+                    province: "广东省",
+                    city: "广州市"
+                },
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log(data);
+                }
+            }); */
+
+          $.ajax({
+            type: "GET",
+            url: "http://suggestion.baidu.com/su",
+            data: {
+              wd: "淘宝",
+            },
+            dataType: "jsonp",
+            jsonp: "cb",
+            jsonpCallback: "myabc",
+            success: function (data) {
+              console.log("success回调函数");
+              console.log(data);
+            },
+          });
+        });
+    </script>
+  </body>
+</html>

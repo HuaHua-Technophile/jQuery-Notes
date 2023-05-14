@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>1-1-2jQuery库延迟等待加载模式</title>
+  </head>
+  <body>
+    <p>
+      在jQuery程序代码中，为了让方法在浏览器加载完网页后执行，一般会使用“$()”将方法进
+      行首尾包裹，即$(function(){})。为什么必须要包裹所要执行的方法呢？
+    </p>
+    <p>
+      这是因为jQuery代码文件是在body标签元素之前加载的，而jQuery代码文件里的方法一
+      般需要操作DOM元素。为了让上述方法能够正常执行，必须等待所有的DOM元素加载后才能
+      进行元素操作，于是就需要通过“$()”包裹方法来实现延迟等待加载功能。
+    </p>
+    <p>
+      在JavaScript原生代码里，原本是通过load事件来实现延迟等待加载的，具体代码如下：
+      <br />window.onload=function() {}
+    </p>
+    <p>
+      在jQuery代码里，为了实现上述功能，则需要通过使用代码
+      <br />$(document).ready(function() {}) <br />简写为：$(function() {})
+    </p>
+    <p>
+      在实际应用中，很少直接使用window.onload事件来实现延迟等待加载，这是因为该事件所关联的方法需要等待图片之类的大型元素加载完毕后才能执行。最令人头疼的就是网速较慢的情况下，页面已经全面展开，图片还在缓慢加载，这时页面上所有的JavaScript交互功能全部处在假死状态，并且只能执行单次，这在多次开发和团队开发中会带来困难。
+    </p>
+    <script>
+      $(function () {
+        console.log("hi jquery");
+      });
+    </script>
+  </body>
+</html>

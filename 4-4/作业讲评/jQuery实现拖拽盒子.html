@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 100px;
+        top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      var divWidth = $('div').width();
+      var divHeight = $('div').height();
+      var pageWidth = $(document).width();
+      var pageHeight = $(document).height();
+
+      $('div').on('mousedown', function (e) {
+        // 获取当前鼠标在触发元素div里面的坐标位置
+        var startX = e.offsetX;
+        var startY = e.offsetY;
+
+        $(document).on('mousemove', function (evt) {
+          var divX = evt.pageX - startX;
+          var divY = evt.pageY - startY;
+
+          if (divX < 0) {
+            divX = 0;
+          } else if (divX > pageWidth - divWidth) {
+            divX = pageWidth - divWidth;
+          }
+
+          if (divY < 0) {
+            divY = 0;
+          } else if (divY > pageHeight - divWidth) {
+            divY = pageHeight - divWidth;
+          }
+
+          $('div').css({
+            left: divX,
+            top: divY,
+          });
+        });
+      });
+
+      $('div').on('mouseup', function (e) {
+        $(document).off('mousemove');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 2px solid orange;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+
+    <p>p段落</p>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // 隐式迭代
+      // 概念：因为大部分的jQuery方法都支持隐式迭代，隐式迭代的原理是方法的内部存在看不见的遍历，它会对匹配到的所有元素进行循环遍历，执行相应的方法，而无需我们再手动地进行循环，方便我们使用
+
+      console.log($("div"));
+      console.log($("p"));
+
+      $("div").css("color", "red");
+      $("div:odd").css("background", "skyblue");
+
+      $("div").click(function () {
+        console.log("div被点击了");
+        console.log("this=>", this);
+        console.log("$(this)=>", $(this));
+        console.log("");
+      });
+
+      $("p").css("color", "blue");
+    </script>
+  </body>
+</html>

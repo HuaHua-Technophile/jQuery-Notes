@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        height: 100px;
+        border: 2px solid red;
+      }
+
+      div span {
+        background: orange;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span>div里面的span元素</span>
+    </div>
+
+    <br />
+    <br />
+    <input type="text" value="马冬梅" />
+    <br />
+    <br />
+
+    <textarea>请来个自我介绍吧</textarea>
+
+    <br />
+    <br />
+
+    <button>获取文本值</button>
+    <button>设置文本值</button>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery文本内容操作
+      // html()相当于innerHTML   操作标签内容, 可以解析HTML标签
+      // text()相当于innerText   操作标签内容, 无法解析HTML标签
+      // val()相当于value  用于操作表单控件的value属性值
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          console.log($("div").html());
+          console.log($("div").text());
+          console.log($("div").val());
+          console.log($("input").val());
+          console.log($("textarea").val());
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          // $("div").html("<h2><i>我是标题2标签</i></h2>")
+          $("div").text("<h2><i>我是标题2标签</i></h2>");
+          $("input").val("去你大爷的");
+          $("textarea").val("哈哈哈哈");
+        });
+    </script>
+  </body>
+</html>

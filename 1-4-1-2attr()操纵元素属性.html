@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>1-4-1-2attr()操纵元素属性</title>
+  </head>
+  <body>
+    <p>
+      attr()方法获取匹配的元素集合中的第一个元素的属性的值或设置每一个匹配元素的一个或多个属性。
+    </p>
+    <p>
+      在jQuery 1.6中,当属性没有被设置时候，.attr()方法将返回undefined。
+      <br />若要检索和更改DOM属性,比如元素的checked, selected, 或
+      disabled状态，请使用.prop()方法。
+    </p>
+    <img src="https://i.328888.xyz/2023/03/15/JFunz.jpeg" />
+    <img src="https://i.328888.xyz/2023/03/15/JFYLq.png" />
+    <img src="https://i.328888.xyz/2023/03/15/JFQxb.jpeg" />
+    <script>
+      console.log($("img").attr("src")); //获取所有img中，第一个元素的src值
+      $("img").attr("title", "wallpaper"); //设置所有img元素的title属性，其值为wallpaper
+      $("img").attr("alt", function (index) {
+        return "IMG." + (index + 1);
+      }); // key,function(index, attr) 第一个参数为当前元素的索引值(从0开始)，第二个参数为原先的属性值。
+    </script>
+  </body>
+</html>

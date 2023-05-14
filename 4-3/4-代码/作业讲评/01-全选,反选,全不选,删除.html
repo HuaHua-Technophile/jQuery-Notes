@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <p>
+      <input type="text" placeholder="请输入选项" class="add" />
+      <button class="addBtn">添加</button>
+    </p>
+
+    <p class="opt">
+      <button>全选</button>
+      <button>全不选</button>
+      <button>反选</button>
+      <button>删除所选</button>
+    </p>
+
+    <!-- 使用label标签包裹表单控件和文本内容是为了实现点击文字,表单控件获取焦点的效果 -->
+    <p>
+      <label><input type="checkbox" />家里没宽带</label>
+    </p>
+    <p>
+      <label><input type="checkbox" />网速不够快</label>
+    </p>
+    <p>
+      <label><input type="checkbox" />手机没流量</label>
+    </p>
+    <p>
+      <label><input type="checkbox" />学校无wifi</label>
+    </p>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      $(".addBtn").click(function () {
+        var addVal = $(".add").val();
+        var $newP = $(
+          '<p><label><input type="checkbox" />' + addVal + "</label></p>"
+        );
+        $("body").append($newP);
+        $(".add").val("");
+      });
+
+      $(".opt button")
+        .eq(0)
+        .click(function () {
+          // console.log($(":checkbox"));
+          // console.log($("p :checkbox"));
+
+          $(":checkbox").prop("checked", true);
+        });
+
+      $(".opt button")
+        .eq(1)
+        .click(function () {
+          $(":checkbox").prop("checked", false);
+        });
+
+      $(".opt button")
+        .eq(2)
+        .click(function () {
+          /* $(":checkbox").each(function () {
+                this.checked = !this.checked;
+            }); */
+
+          $(":checkbox").each(function () {
+            $(this).prop("checked", !$(this).prop("checked"));
+          });
+        });
+
+      $(".opt button")
+        .eq(3)
+        .click(function () {
+          $("p :checkbox:checked").parent().parent().remove();
+        });
+    </script>
+  </body>
+</html>

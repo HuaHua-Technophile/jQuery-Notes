@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .father {
+        width: 500px;
+        height: 280px;
+        background: orange;
+        margin-top: 30px;
+        margin-left: 60px;
+        padding-top: 20px;
+        position: relative;
+      }
+
+      .father .son {
+        width: 300px;
+        height: 100px;
+        background: skyblue;
+        position: absolute;
+        left: 90px;
+        top: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="father">
+      <div class="son">son子元素</div>
+    </div>
+
+    <button>获取offset()</button>
+    <button>获取position()</button>
+    <button>设置offset()</button>
+    <script src="./js/jquery-3.6.4.js"></script>
+    <script>
+      // offset()"设置"或"获取"元素相对页面(body,文档)的偏移
+      // position()"获取"元素偏移(一般是给定位元素使用的,会得到相对非静态定位父辈元素的偏移距离)
+      $("button")
+        .eq(0)
+        .click(function () {
+          console.log($(".son").offset());
+          console.log($(".son").offset().top);
+          console.log($(".son").offset().left);
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          console.log($(".son").position());
+          console.log($(".son").position().top);
+          console.log($(".son").position().left);
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          /* $(".son").offset({
+                left: 0
+            }) */
+
+          /* $(".son").offset({
+                top: 10
+            }); */
+
+          $(".son").offset({
+            left: 15,
+            top: 10,
+          });
+        });
+    </script>
+  </body>
+</html>

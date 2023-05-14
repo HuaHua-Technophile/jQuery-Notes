@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      span {
+        background: #ffc800;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input id="search" />
+    <ul id="search-bar"></ul>
+    <p>
+      There are moments in life when you miss someone so much that you just want
+      to pick them from your dreams and hug them for real
+    </p>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      // 使用空格切割字符串
+      var arr = $("p").text().split(" ");
+      // 替换\n
+      arr = arr.map(function (item) {
+        return item.replace("\n", "");
+      });
+      // 去掉数组元素为""空字符串的元素
+      arr = arr.filter(function (item) {
+        return item.length > 1;
+      });
+
+      /* 
+        // 另一个做法
+        var reg = /\b\w+\b/gi;
+        var arr = $("p").text().match(reg); */
+
+      $("#search").keyup(function () {
+        // 获取文本框的值
+        var searchVal = $(this).val();
+
+        // 初始化p段落的标签内容
+        $("p").html(arr.join(" "));
+
+        // 当文本框的值为空的时候
+        if (searchVal.trim().length === 0) {
+          $("#search-bar").empty();
+          return;
+        }
+
+        // 从p段落中找到含有searchVal单词
+        var newArr = arr.filter(function (item) {
+          return item.indexOf(searchVal) != -1;
+        });
+
+        // 渲染数组
+        $("#search-bar").html(
+          newArr
+            .map(function (item) {
+              return "<li>" + item + "</li>";
+            })
+            .join("")
+        );
+      });
+
+      // 事件委托
+      $("#search-bar")[0].onclick = function (e) {
+        // console.log(e.target);
+        // console.log(e.target.nodeName);
+        if (e.target.nodeName === "LI") {
+          // 获取当前被点击li的
+          var curLiText = e.target.innerText;
+
+          // 定义一个空数组
+          var newArr = [];
+          // 从arr数组中,找到数组元素等于curLiText值的元素
+          arr.forEach(function (item) {
+            if (item === curLiText) {
+              newArr.push("<span>" + item + "</span>");
+            } else {
+              newArr.push(item);
+            }
+          });
+          // 设置p段落的标签内容
+          $("p").html(newArr.join(" "));
+        }
+      };
+    </script>
+  </body>
+</html>

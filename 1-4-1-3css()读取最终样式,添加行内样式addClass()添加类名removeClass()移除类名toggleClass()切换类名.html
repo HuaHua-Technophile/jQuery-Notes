@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>
+      1-4-1-3css()读取最终样式,添加行内样式addClass()添加类名removeClass()移除类名toggleClass()切换类名
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #1e1e1e;
+      }
+      div {
+        width: 80px;
+        height: 80px;
+      }
+      .container {
+        width: 150px;
+        font-size: 30px;
+        color: #00ff00;
+        border: 3px solid #8a2be2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="color: #d87093">666</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p class="a b c d e"></p>
+    <script>
+      console.log($(".container").css("color")); //rgb(216, 112, 147)//css()方法获取实际呈现的样式
+      console.log($(".container").css(["color", "width"])); //{color: 'rgb(216, 112, 147)', width: '150px'}//在css()方法中填入数组，返回一个依次包含元素实际样式(键值对)的对象
+      $(".container").css("font-size", "50px"); //css()方法设置单个样式，用逗号分隔（属性名,属性值）
+      $(".container").css({ fontWeight: "bolder", lineHeight: "50px" }); //css()方法中填入一个对象，所有匹配元素添加行内式:样式属性的{名:值 [名/值对] }
+      $("div").addClass("border border-success m-auto"); //addClass()方法添加类名,多个类名用空格分隔
+      $("div").addClass(function (index, Class) {
+        console.log(Class);
+        return "aaa bbb item-" + (index + 1);
+      }); //addClass()填入回调函数,此函数必须返回一个或多个空格分隔的class名。接受两个参数:index参数为对象在这个集合中的索引值，class参数为这个对象原先的class属性值
+      $("div").removeClass("bbb ccc"); //removeClass()方法可移除多个类名,用空格分开
+      $("p").removeClass(); //removeClass()不甜如参数表示移除所有类名
+      $("div").removeClass(function (index, Class) {
+        console.log(Class);
+        return "item-" + (index + 1);
+      }); //此函数必须返回一个或多个空格分隔的class名。接受两个参数:index参数为对象在这个集合中的索引值，class参数为这个对象原先的class属性值
+      $("div:eq(1)").toggleClass("hover"); //toggleClass()方法切换class类名存在的状态
+      $("div:eq(1)").toggleClass("active", false);
+      $("div:eq(2)").toggleClass("active", function () {
+        return true;
+      }); //toggleClass()填入两个参数,第二个参数为布尔值/条件表达式/返回布尔值的回调函数,表示是否应该存在该类名
+      //$('div:eq(3)').toggleClass();
+      //$('div:eq(3)').toggleClass(true);
+      $("div:eq(3)").toggleClass(false); //不填值,或填入的第一个值是布尔值,则清除所有class
+      $("div:eq(2)").toggleClass(function (index, Class, Switch) {
+        console.log(Class, Switch); //'border border-success m-auto aaa active' false
+        return "aaa";
+      }, false);
+      $("div:eq(3)").toggleClass(function (index, Class, Switch) {
+        console.log(Switch); //true
+        return "div-" + (index + 1);
+      }, true); //toggleClass()方法填入回调函数,function(index, class,switch)[, switch] 用来返回在匹配的元素集合中的每个元素上用来切换的样式类名的一个函数。
+      //index:元素的索引位置,class:元素旧的样式类作为参数。switch:一个用来判断样式类添加还是移除的 boolean 值。
+    </script>
+  </body>
+</html>

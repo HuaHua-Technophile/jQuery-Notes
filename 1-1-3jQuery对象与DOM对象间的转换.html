@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>1-1-3jQuery对象与DOM对象间的转换</title>
+  </head>
+  <body>
+    <p>
+      jQuery对象也称为“jQuery包装集”，是jQuery库特有的对象。该对象其实就是一个“类”，不仅封装了许多方法，而且可以动态地通过加载插件扩展类的功能。
+    </p>
+    <p>DOM对象，就是使用原生JavaScript代码获得的对象</p>
+    <p>
+      对于jQuery库来说，jQuery对象非常重要，因为除jQuery工具方法之外，jQuery的操作都从jQuery对象开始。即只有获取jQuery对象后，才可以使用jQuery库所提供的方法4
+      <br />在jQuery对象中无法调用DOM对象的任何方法，同样在DOM对象中也无法调用jQuery方法，不过jQuery库提供的方法包含了大部分的DOM操作
+    </p>
+    <h4>
+      jQuery对象是一个特殊的数组对象，即使只有一个元素，jQuery对象仍然是一个数组。之所以说其特殊，是因为实际上jQuery对象是包含一个数组对象和各种方法的类。而jQuery对象的数组里保存的是DOM对象，因此可以通过索引的方式将jQuery对象转换成DOM对象
+    </h4>
+    <script>
+      let $p = $("p");
+      let p1 = $p[0];
+      console.log(p1);
+    </script>
+    <h4>对于DOM对象，只需要用$()把DOM对象包装起来，即可获得一个jQuery对象</h4>
+    <script>
+      let p2 = document.getElementsByTagName("p");
+      let $p2 = $(p2);
+      console.log(p2);
+      console.log($p2);
+    </script>
+    <h1>
+      在具体开发项目时，如果获取的对象是jQuery对象，那么在变量标识符前面加上
+      $，这样容易识别出哪些是jQuery对象。可通过下面的代码创建jQuery对象：
+    </h1>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <script>
+      /* function fn() {
+            console.log("我是fn函数");
+        } */
+
+      /* window.fn = function () {
+            console.log("我是fn函数222");
+        } */
+
+      /* var funName = "fn";
+        window[funName] = function () {
+            console.log("我是fn函数3333");
+        } */
+
+      /* var fn = function () {
+            console.log("我是fn函数4444");
+        } */
+
+      // var fn = new Function( 'console.log("我是fn函数4444")' );
+
+      /* function abc() {
+            function fn() {
+                console.log("我是abc函数里面的fn函数");
+            }
+        }
+        abc(); */
+
+      function fn(data) {
+        console.log("arguments=>", arguments);
+        console.log("data=>", data);
+        console.log("我是fn函数");
+      }
+    </script>
+
+    <script src="https://api.asilu.com/phone?phone=13123456789&callback=fn"></script>
+
+    <script>
+      // 手机归属地接口:  https://api.asilu.com/phone?phone=13123456789
+
+      // jsonp （json with padding）
+      // json with padding  将json 数据作为填充，简单来说就是服务器将json作为函数的参数。
+      // jsonp的原理利用script标签的src属性来实现跨域  script标签src引入跨域资源的时候,不会受到同源策略限制
+
+      // jsonp使用步骤
+      // 注意: 并不是所有的请求地址,都可以使用jsonp方式解决跨域
+      // 1. 使用jsonp第一步骤, 服务器允许使用jsonp方式请求数据
+      // 2. 把跨域请求的地址,写在script标签的src属性中,拼接一个参数,一般参数名为callback,还有传递一个函数名称  会自动帮我们调用这个函数
+      // 3. 在全局作用域下定义这个函数,函数的第一个形参就是服务器返回的数据
+    </script>
+  </body>
+</html>

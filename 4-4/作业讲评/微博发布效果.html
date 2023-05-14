@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li {
+            line-height: 25px;
+            border-bottom: 1px dashed #cccccc;
+            /* 隐藏元素 */
+            display: none;
+        }
+
+        input {
+            float: right;
+        }
+
+        ul li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea class="txt" cols="30" rows="10"></textarea>
+        <button class="btn">发布</button>
+
+        <ul>
+        </ul>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(".btn").on("click", function () {
+            var txtVal = $(".txt").val();
+            var $newLi = $("<li>" + txtVal + "<a href='#'>删除</a></li>");
+            $("ul").append($newLi);
+            // 下滑
+            $newLi.stop().slideDown(400);
+            $(".txt").val("");
+
+            // 给删除按钮绑定事件
+            $newLi.find("a").on("click", function () {
+                // 上滑
+                $(this).parent("li").stop().slideUp(200, function () {
+                    // console.log(this);
+                    $(this).remove();
+                });
+            });
+        });
+
+        $(".txt").on("keyup", function (e) {
+            // console.log(e.key, e.keyCode, e.code);
+            if (e.keyCode === 13) {
+                // 手动触发
+                // $(".btn").click();
+                // $(".btn").trigger("click");
+                $(".btn").triggerHandler("click");
+            }
+        })
+    </script>
+</body>
+
+</html>

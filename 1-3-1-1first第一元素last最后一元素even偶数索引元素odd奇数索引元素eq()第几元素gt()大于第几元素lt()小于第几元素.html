@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>
+      1-3-1-1first第一元素last最后一元素even偶数索引元素odd奇数索引元素eq()第几元素gt()大于第几元素lt()小于第几元素
+    </title>
+  </head>
+  <body>
+    <ol>
+      <li>list item 1</li>
+      <li>list item 2</li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+      <li>list item 5</li>
+    </ol>
+    <ol>
+      <li>list item 1</li>
+      <li>list item 2</li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+    </ol>
+    <div>
+      <li>list item 1</li>
+    </div>
+    <script>
+      $("li:first").css("font-size", "50px"); //获取匹配的第一个元素
+      $("li:last").css("font-size", "70px"); //获取匹配的最后个元素
+      $("li:even").css("color", "pink"); //匹配所有索引值为偶数的元素，从 0 开始计数
+      $("li:odd").css("color", "lime"); //匹配所有索引值为奇数的元素，从 0 开始计数
+      $("li:eq(6)").css({ color: "peru", fontSize: "25px" }); //匹配一个给定索引值的元素
+      $("li:gt(6)").css("font-weight", "bolder"); //匹配所有大于给定索引值的元素
+      $("li:lt(6)").css("font-weight", "lighter"); //匹配所有小于于给定索引值的元素
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .grandfather {
+        width: 470px;
+        height: 480px;
+        background: orange;
+        margin-left: 100px;
+        margin-top: 50px;
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+
+      .grandfather .father {
+        width: 250px;
+        height: 260px;
+        background: skyblue;
+        padding-top: 40px;
+        padding-left: 50px;
+      }
+
+      .grandfather .father .son {
+        width: 100px;
+        height: 100px;
+        background: lightgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grandfather">
+      <div class="father">
+        <div class="son">son</div>
+      </div>
+    </div>
+
+    <br />
+
+    <a href="https://www.baidu.com">百度</a>
+    <br />
+    <br />
+
+    <input type="text" />
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery事件对象
+      // jQuery 对DOM中的事件对象 event 进行了封装，兼容性更好，获取更方便，使用变化不大。事件被触发，就会有事件对象的产生。
+
+      // 语法
+      // element.on(events,[selector],function(event) {})
+
+      // 阻止默认行为：event.preventDefault()
+      // 阻止冒泡： event.stopPropagation()
+
+      // 注意：jQuery中的 event 对象使用，可以借鉴 API 和 DOM 中的 event 。
+
+      $(".son").click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("son的click事件");
+        // 获取事件对象相关属性
+        console.log("e.clientX=>", e.clientX);
+        console.log("e.clientY=>", e.clientY);
+        console.log("");
+        console.log("e.pageX=>", e.pageX);
+        console.log("e.pageY=>", e.pageY);
+        console.log("");
+        console.log("e.offsetX=>", e.offsetX);
+        console.log("e.offsetY=>", e.offsetY);
+        console.log("");
+        console.log("e.target=>", e.target);
+        console.log("");
+        // 阻止事件冒泡
+        e.stopPropagation();
+        console.log("");
+      });
+      $(".father").click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("father的click事件");
+        console.log("");
+      });
+      $(".grandfather").click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("grandfather的click事件");
+        console.log("");
+      });
+      $("body").click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("body的click事件");
+        console.log("");
+      });
+      $("html").click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("html的click事件");
+        console.log("");
+      });
+      $(document).click(function (e) {
+        console.log("e事件对象=>", e);
+        console.log("document的click事件");
+        console.log("");
+      });
+
+      $("a").on("click", function (e) {
+        console.log("e事件对象=>", e);
+        console.log("a链接的点击事件");
+        // 阻止默认行为
+        e.preventDefault();
+        // 阻止冒泡
+        e.stopPropagation();
+        console.log("");
+      });
+    </script>
+  </body>
+</html>

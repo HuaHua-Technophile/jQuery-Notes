@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 150px;
+        height: 200px;
+        background: pink;
+
+        /* 注意: 想要触发jQuery动画的话, 隐藏元素,必须使用display:none;  使用visibility:hidden以及opacity:0 */
+        /* visibility: hidden; */
+        /* opacity: 0; */
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>显示隐藏切换</button>
+    <br />
+    <br />
+    <div>div的内容</div>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery动画效果
+      // 显示隐藏：show() / hide() / toggle() ;
+      // 上滑下滑：slideDown() / slideUp() / slideToggle() ;
+      // 淡入淡出：fadeIn() / fadeOut() / fadeToggle() / fadeTo() ;
+      // 自定义动画：animate() ;
+
+      // 显示隐藏
+      // 显示隐藏动画，常见有三个方法：show()  /  hide()  /  toggle() ;
+      // 语法规范如下:
+
+      // 显示语法规范
+      // show( [speed,[easing,[fn]] ] )
+
+      // 显示参数
+      // 1. 参数都可以省略,如果参数都省略表示无动画直接显示
+      // 2. speed:三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+      // 3. easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+      // 4. fn: 回调函数, 在动画完成时执行的函数，每个元素执行一次
+
+      // 隐藏语法规范
+      // hide( [speed,[easing,[fn]] ] )
+
+      // 隐藏参数
+      // 1. 参数都可以省略,如果参数都省略表示无动画直接显示
+      // 2. speed:三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+      // 3. easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+      // 4. fn: 回调函数, 在动画完成时执行的函数，每个元素执行一次
+
+      // 切换语法规范
+      // toggle( [speed,[easing,[fn]] ] )
+
+      // 切换参数
+      // 1. 参数都可以省略,表示无动画直接显示
+      // 2. speed:三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+      // 3. easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+      // 4. fn: 回调函数, 在动画完成时执行的函数，每个元素执行一次
+
+      // 建议:平时一般不带参数,直接显示隐藏即可
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          // $("div").show();
+          $("div").show(1000, "linear", function () {
+            $(this).css("backgroundColor", "skyblue");
+          });
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          $("div").hide();
+          // $("div").hide("slow");
+          // $("div").hide("fast");
+          // $("div").hide("normal");
+          // $("div").hide(1234);
+          // $("div").hide(2000);
+          // $("div").hide(2000, "linear");
+          /* $("div").hide(2000, "linear", function () {
+                console.log("隐藏完毕~~");
+            }); */
+
+          // $("div").hide("linear");
+          /* $("div").hide(function () {
+                console.log("隐藏完毕~~");
+            }); */
+
+          /* $("div").hide(1500, function () {
+                console.log("隐藏完毕~~");
+            }); */
+
+          /* $("div").hide("linear", function () {
+                console.log("隐藏完毕~~");
+            }); */
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          // $("div").toggle();
+          // $("div").toggle(500);
+          // $("div").toggle(500, "linear");
+          $("div").toggle(500, "linear", function () {
+            console.log("切换完毕");
+          });
+        });
+    </script>
+  </body>
+</html>

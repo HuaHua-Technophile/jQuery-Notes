@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      div {
+        width: 120px;
+        height: 150px;
+        background: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>div内容</div>
+    <input type="text" id="username" />
+
+    <ul>
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>赵六</li>
+      <li>孙七</li>
+    </ul>
+
+    <button>添加新的li元素</button>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery事件注册
+      // jQuery 为我们提供了方便的事件注册机制，是开发人员抑郁操作优缺点如下：
+      // 优点: 操作简单，且不用担心事件覆盖等问题。
+      // 缺点: 无法动态新增的元素绑定事件。
+      // 但是并且不是所有的事件都可以直接去掉on,有对应的方法,  比如oninput事件就没有
+
+      // 单个事件注册语法
+      // 语法:
+      // jQuery对象.不带on的事件名(匿名函数)
+
+      // 比如:​
+      // $("div").click(function(){})
+
+      // 其他事件和原生基本一致比如mouseover,mouseout,blur,focus,change,keydown,keyup,resize,scroll等
+
+      $("div").click(function () {
+        console.log("div的click事件1111");
+      });
+      $("div").click(function () {
+        console.log("div的click事件2222");
+      });
+      $("div").click(function () {
+        console.log("div的click事件33333");
+      });
+      $("div").mouseover(function () {
+        console.log("div的mouseover事件");
+      });
+      $("div").mouseout(function () {
+        console.log("div的mouseout事件");
+      });
+      $("div").mousemove(function () {
+        console.log("div的mousemove事件");
+      });
+
+      /* $("input").keyup(function () {
+            console.log(this.value);
+        }); */
+
+      // 无法使用jQuery.input() 方式绑定input事件
+      /* $("input").input(function () {
+            console.log(this.value);
+        }); */
+
+      console.log($("ul li"));
+      $("ul li").click(function () {
+        $(this).css("background", "skyblue");
+      });
+
+      $("button").click(function () {
+        var newLi = document.createElement("li");
+        newLi.innerText = "李二狗";
+        // console.log($("ul"));
+        // console.log($("ul")[0]);
+        $("ul")[0].appendChild(newLi);
+      });
+    </script>
+  </body>
+</html>

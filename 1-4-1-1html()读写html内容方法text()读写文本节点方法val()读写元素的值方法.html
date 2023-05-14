@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>
+      1-4-1-1html()读写html内容方法text()读写文本节点方法val()读写元素的值方法
+    </title>
+  </head>
+  <body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>666</div>
+    <div>666</div>
+    <div>666</div>
+    <div>666</div>
+    <input type="text" value="我测" />
+    <input type="text" value="你们的健康码" />
+    <input type="text" value="雪豹我们上" />
+    <input type="text" value="雪豹闭嘴" />
+    <select name="" id="">
+      <option value="1">1!</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <select name="" id="">
+      <option value="4">4</option>
+      <option value="5">5!</option>
+      <option value="6">6</option>
+    </select>
+    <script>
+      console.log($("div").html()); //div1
+      /*取得第一个匹配元素的html内容。这个函数不能用于XML文档。但可以用于XHTML文档。
+在一个 HTML 文档中, 我们可以使用 .html() 方法来获取任意一个元素的内容。 如果选择器匹配多于一个的元素，那么只有第一个匹配元素的 HTML 内容会被获取。*/
+      $('div:contains("666")').html('<p style="color:red">999<p>');
+      /*设置所有匹配元素的内容*/
+      console.log($("div").text()); //div1div2div3999999999
+      $("div:gt(4)").text('<p style="color:red">哈哈<p>'); // 设置所有匹配元素的文本内容
+      console.log($("input").val());
+      $("input:lt(2)").val("文明");
+      $("input:gt(1)").val(function () {
+        return "素质" + $(this).index();
+      });
+      $("select").val([1, 5]);
+      /*val() : 返回元素集合中第一个元素的值
+val('text') : 设置所有选择器元素属性值动插入与替换(会先注销原节点)
+val(fn[index,old-value]) : 填入回调参数,返回要设置的值，参数:(索引，原先的值)
+val(['value1','value2']) : 依照数组顺序设定多个值*/
+    </script>
+  </body>
+</html>

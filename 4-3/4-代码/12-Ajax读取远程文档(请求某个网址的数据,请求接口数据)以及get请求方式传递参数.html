@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      ul {
+        width: 650px;
+      }
+
+      ul li {
+        text-align: center;
+        float: left;
+        margin-left: 10px;
+      }
+
+      ul li img {
+        width: 200px;
+        height: 266px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>获取第1页数据</button>
+    <button>下一页</button>
+    <button>上一页</button>
+    <br />
+    <br />
+    <ul></ul>
+    <script>
+      // 我们在发送Ajax请求的时候, 我们可以通过请求给服务器传递参数, 服务器会根据参数的不同,给我们返回不同的数据
+      // GET方式传递参数方式: 通过url拼接参数, 格式如下
+      // url?参数1=值1&参数2=值2&参数3=值3...
+
+      // 比如接口: https://apis.netstart.cn/bcomic/GetClassPageSixComics?id=136&pageNum=2&pageSize=6
+
+      var btns = document.querySelectorAll("button");
+      var objUl = document.querySelector("ul");
+
+      // 当前页码
+      var currentPageNum = 1;
+
+      // 封装一个函数,根据页码获取对应的数据
+      function getDataAndRender(pageNum) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          "https://apis.netstart.cn/bcomic/GetClassPageSixComics?id=136&pageNum=" +
+            pageNum +
+            "&pageSize=6"
+        );
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            // console.log(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
+            // console.log(res);
+            // 获取目标数据
+            var targetData = res.data.roll_six_comics;
+            // console.log(targetData);
+            objUl.innerHTML = targetData
+              .map(function (item) {
+                return (
+                  '<li><img width="200" src="' +
+                  item.vertical_cover +
+                  '"/><p>' +
+                  item.title +
+                  "</p></li>"
+                );
+              })
+              .join("");
+          }
+        };
+      }
+
+      btns[0].onclick = function () {
+        getDataAndRender(currentPageNum);
+      };
+
+      btns[1].onclick = function () {
+        // 当前页码加1
+        currentPageNum++;
+        getDataAndRender(currentPageNum);
+      };
+
+      btns[2].onclick = function () {
+        // 当前页码减1
+        currentPageNum--;
+        getDataAndRender(currentPageNum);
+      };
+
+      getDataAndRender(currentPageNum);
+    </script>
+  </body>
+</html>

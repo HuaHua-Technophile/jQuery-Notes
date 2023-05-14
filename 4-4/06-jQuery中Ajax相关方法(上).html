@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <button>发送get请求</button>
+    <button>发送post请求</button>
+    <button>获取getJSON文件</button>
+    <button>获取文档文件</button>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      // $.get()方法 用于发送ajax的get请求
+      // 语法
+      // $.get(请求地址, 请求参数, function(){});
+
+      // $.post()方法  用于发送ajax的post请求
+      // $.post(请求地址, 请求参数, function(){});
+
+      // 注意: 请求参数写的时候, 可以写参数字符串 id=1&age=23 也可以写js对象
+
+      // 语法
+      // $.getJSON()方法 读取json文件
+      // 语法
+      // $.getJSON(json文件所在路径, function(){});
+
+      $("button")
+        .eq(0)
+        .click(function () {
+          $.get(
+            "https://v2.alapi.cn/api/star?star=leo&token=lJLxHK2NrnPVri457AaK",
+            function (res) {
+              console.log(res);
+            }
+          );
+
+          /* $.get("https://v2.alapi.cn/api/star", "star=leo&token=lJLxHK2NrnPVri457AaK", function (res) {
+                console.log(res);
+            }); */
+
+          /* $.get("https://v2.alapi.cn/api/star", {
+                star: "leo",
+                token: "lJLxHK2NrnPVri457AaK"
+            }, function (res) {
+                console.log(res);
+            }); */
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          /* $.post("https://v2.alapi.cn/api/star", "star=leo&token=lJLxHK2NrnPVri457AaK", function (res) {
+                console.log(res);
+            }); */
+
+          $.post(
+            "https://v2.alapi.cn/api/star",
+            {
+              star: "leo",
+              token: "lJLxHK2NrnPVri457AaK",
+            },
+            function (res) {
+              console.log(res);
+            }
+          );
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          $.getJSON("./herolist.json", function (data) {
+            console.log(data);
+          });
+
+          $.get("./herolist.json", function (data) {
+            console.log(data);
+          });
+        });
+
+      $("button")
+        .eq(3)
+        .click(function () {
+          // 读取json文件使用$.getJSON(), 读取其他文件需要使用$.get()
+          $.get("./a.txt", function (data) {
+            console.log(data);
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      .box {
+        width: 300px;
+        height: 300px;
+        background: green;
+        text-align: center;
+        line-height: 300px;
+      }
+
+      .box .num {
+        font-size: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <span class="num">0</span>
+    </div>
+    <script>
+      // 要求：
+      // 1. 事件触发时函数立即触发  第一次触发
+      // 2. 在指定时间1000ms  结束前函数不会触发
+      // 3. 事件结束后，指定时间结束后不会再触发一次   最后一次不触发
+
+      // 时间戳事件函数节流的第一个版本
+
+      function mythrottle1(func, wait) {
+        var old = 0;
+        var _this;
+        var args;
+
+        return function () {
+          _this = this;
+          args = arguments;
+
+          var now = new Date().getTime();
+          if (now - old > wait) {
+            func.apply(_this, args);
+            old = now;
+          }
+        };
+      }
+
+      var box = document.querySelector(".box");
+      var objSpan = document.querySelector("span");
+      var count = 0;
+      box.onmousemove = mythrottle1(function (e) {
+        count++;
+        objSpan.innerText = count;
+      }, 1000);
+    </script>
+  </body>
+</html>

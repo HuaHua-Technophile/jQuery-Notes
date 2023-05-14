@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      body {
+        height: 4000px;
+      }
+
+      .box {
+        position: fixed;
+        right: 50px;
+        top: 45%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <button>返回顶部</button><br /><br />
+      <button>返回100</button><br /><br />
+      <button>返回500</button><br /><br />
+      <button>返回999</button><br /><br />
+    </div>
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      $("button")
+        .eq(0)
+        .click(function () {
+          $("html")
+            .stop()
+            .animate(
+              {
+                scrollTop: 0,
+              },
+              2000,
+              "linear",
+              function () {
+                console.log("回到顶部啦,好开心啊");
+              }
+            );
+        });
+
+      $("button")
+        .eq(1)
+        .click(function () {
+          $("html").stop().animate({
+            scrollTop: 100,
+          });
+        });
+
+      $("button")
+        .eq(2)
+        .click(function () {
+          $("html").stop().animate({
+            scrollTop: 500,
+          });
+        });
+
+      $("button")
+        .eq(3)
+        .click(function () {
+          $("html").stop().animate({
+            scrollTop: 999,
+          });
+        });
+    </script>
+  </body>
+</html>

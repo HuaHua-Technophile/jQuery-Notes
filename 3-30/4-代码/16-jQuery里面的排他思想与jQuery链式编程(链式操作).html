@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+    <style>
+      button {
+        border: none;
+        outline: none;
+        background: pink;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="button-box">
+      <button>按钮1</button>
+      <button>按钮2</button>
+      <button>按钮3</button>
+      <button>按钮4</button>
+      <button>按钮5</button>
+    </div>
+
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script>
+      // jQuery里面的排他思想
+      // 想要多选一的效果,排他思想:当前元素设置样式,其余的兄弟元素清除样式
+
+      // jQuery链式编程(链式操作)
+      // 介绍：使用JavaScript时要对某个元素进行一系列操作，只能一次一次的操作，然而 jQuery 提供了链式操作方式，可以通过.语法对同一对象多次设置其属性或方法
+      // 注意:使用链式编程一定要注意是哪个对象执行样式
+      // 概念：jQuery实现链式调用的原理是每个方法执行完成后都返回了 this 对象，我们使用JavaScript简单的实现链式操作
+
+      $(".button-box button").click(function () {
+        // console.log("this=>", this);
+
+        // jQuery设置单个css属性的方式
+        // jQuery对象.css("css属性名", "css属性值");
+
+        /* $(".button-box button").css("background-color", "pink");
+            $(this).css("background-color", "skyblue"); */
+
+        /* console.log($(this));
+            console.log($(this).siblings("button"));
+            $(this).siblings("button").css("background-color", "pink")
+            $(this).css("background-color", "skyblue"); */
+
+        /* console.log("$(this)=>", $(this));
+            var res = $(this).css("background-color", "skyblue");
+            console.log("res=>", res);
+            console.log("res.siblings('button')=>", res.siblings('button'));
+            res.siblings('button').css("background-color", "pink"); */
+
+        /* var res = $(this).css("background-color", "skyblue");
+            res.siblings('button').css("background-color", "pink"); */
+
+        // $(this).css("background-color", "skyblue").siblings('button').css("background-color", "pink");
+
+        $(this)
+          .css("background-color", "skyblue")
+          .siblings("button")
+          .css("background-color", "pink");
+      });
+    </script>
+  </body>
+</html>

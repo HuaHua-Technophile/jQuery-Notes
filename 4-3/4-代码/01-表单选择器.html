@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>花花</title>
+  </head>
+
+  <body>
+    <form action="index.php" method="get">
+      <p>用户名:<input type="text" /></p>
+      <p>密　码:<input type="password" /></p>
+
+      <p>
+        性　别: <input type="radio" checked="checked" />男
+        <input type="radio" />女
+      </p>
+
+      <p>
+        爱　好: <input type="checkbox" checked="checked" />吃饭
+        <input type="checkbox" checked="checked" />睡觉
+        <input type="checkbox" />打代码 <input type="checkbox" />听歌
+        <input type="checkbox" checked="checked" />看电影
+      </p>
+
+      <p>
+        图　片:
+        <input type="file" />
+      </p>
+
+      <p>
+        省　份:
+        <!-- multiple属性允许多选,可以按ctrl键或者shift键配合鼠标左键点击 -->
+        <!-- size设置显示的选项个数 -->
+        <select multiple="multiple" size="5">
+          <option selected="selected">广东省</option>
+          <option>广西自治区</option>
+          <option selected="selected">湖南省</option>
+          <option>湖北省</option>
+          <option>上海市</option>
+          <option selected="selected">重庆市</option>
+          <option>四川省</option>
+        </select>
+      </p>
+      <p>
+        介　绍:
+        <textarea></textarea>
+      </p>
+
+      <p>
+        <!-- 隐藏域:在页面中不会显示,但是提交数据的时候,可以提交到后台 -->
+        <input type="hidden" value="123xcvsdfxcv" />
+      </p>
+      <p>
+        <input type="reset" value="重新填写" />
+        <input type="reset" value="重填" disabled="disabled" />
+        <input type="submit" value="提交数据" />
+        <input type="button" value="普通按钮" />
+        <button type="submit">提交按钮</button>
+        <button type="button">普通按钮</button>
+        <button type="reset">重置按钮</button>
+      </p>
+    </form>
+
+    <script src="./js/jquery-3.6.4.js"></script>
+    <script>
+      // jQuery表单选择器
+      // $(":input") ：匹配所有 input, textarea, select 和 button 也就是所有的表单元素
+      // $("input") ：匹配所有 input标签元素
+      // $(":text") ：匹配所有的单行文本框
+      // $(":password")：匹配所有密码框
+      // $(":radio")：匹配所有单选按钮
+      // $(":checkbox")：匹配所有复选按钮
+      // $(":file")：匹配所有上传框
+      // $(":submit")：匹配所有提交按钮
+      // $(":reset")：匹配所有重置按钮
+      // $(":button")：匹配所有button按钮标签
+      // $(":checked"): 查找所有选中的单选按钮,复选框以及option元素
+      // $(":selected"): 匹配所有选中的option元素
+      // $(":disabled"): 匹配所有不可用元素,也就是被禁用的元素
+      console.log($(":input"));
+      console.log($("input"));
+      console.log($(":text"));
+      console.log($(":radio"));
+      console.log($(":checkbox"));
+      console.log($(":checked"));
+      console.log($(":checkbox:checked")); // 选中的复选框
+      console.log($(":selected")); // 选中的下拉框选项
+    </script>
+  </body>
+</html>

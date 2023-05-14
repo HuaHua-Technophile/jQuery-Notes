@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>花花</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      img {
+        vertical-align: bottom;
+      }
+
+      .box {
+        height: 380px;
+        width: 820px;
+        margin: 100px auto;
+        overflow: hidden;
+      }
+
+      .box .img_list {
+        width: 500%;
+        height: 340px;
+      }
+
+      .box .img_list li {
+        float: left;
+        width: 820px;
+        height: 340px;
+      }
+
+      .box .title_list {
+        height: 40px;
+        background: #e3e2e2;
+      }
+
+      .box .title_list span {
+        float: left;
+        width: 164px;
+        text-align: center;
+        height: 38px;
+        line-height: 38px;
+        border-bottom: 2px solid #e3e2e2;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .box .title_list span.current {
+        background: #f7f6f6;
+        color: #ab8e66;
+        border-bottom: 2px solid #cea861;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <ul class="img_list">
+        <li>
+          <a href="#"><img src="images/1.jpg" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/2.jpg" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/3.jpg" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/4.jpg" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/5.jpg" /></a>
+        </li>
+      </ul>
+      <div class="title_list">
+        <span class="current">FPX冠军皮肤</span>
+        <span>魔女 婕拉 至臻</span>
+        <span>2020LPL春季赛季后赛</span>
+        <span>挑战主播赢现金</span>
+        <span>每周限时优惠</span>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+      // .title_list span点击事件
+      $('.title_list span').click(function () {
+        // 高亮
+        $(this).addClass('current').siblings('span').removeClass('current');
+
+        // 获取当前span对应的index索引号
+        var index = $(this).index();
+
+        // 移动.img_list层
+        $('.img_list')
+          .stop()
+          .animate({
+            'margin-left': -820 * index,
+          });
+
+        // 赋值currentIndex的值
+        currentIndex = index;
+      });
+
+      // 轮播索引号
+      var currentIndex = 0;
+
+      // 自动轮播
+      function autoPlay() {
+        var timer = setInterval(function () {
+          // 自加1
+          currentIndex++;
+
+          // 边界判断
+          if (currentIndex >= 5) {
+            currentIndex = 0;
+          }
+
+          // 高亮
+          $('.title_list span')
+            .eq(currentIndex)
+            .addClass('current')
+            .siblings('span')
+            .removeClass('current');
+
+          // 移动.img_list层
+          $('.img_list')
+            .stop()
+            .animate({
+              'margin-left': -820 * currentIndex,
+            });
+        }, 2000);
+
+        return timer;
+      }
+
+      // 开启自动轮播
+      var timer = autoPlay();
+
+      // .box的鼠标移上以及鼠标移出
+      $('.box').hover(
+        function () {
+          clearInterval(timer);
+        },
+        function () {
+          timer = autoPlay();
+        }
+      );
+    </script>
+  </body>
+</html>

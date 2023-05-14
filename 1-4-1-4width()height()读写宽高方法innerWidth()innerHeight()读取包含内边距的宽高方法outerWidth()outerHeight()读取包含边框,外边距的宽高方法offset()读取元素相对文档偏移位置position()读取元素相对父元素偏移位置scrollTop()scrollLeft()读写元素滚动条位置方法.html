@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://i.328888.xyz/2023/04/14/ixDL13.jpeg"
+      type="image/png" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.css"
+      rel="stylesheet" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.js"></script>
+    <title>
+      1-4-1-4width()height()读写宽高方法innerWidth()innerHeight()读取包含内边距的宽高方法outerWidth()outerHeight()读取包含边框,外边距的宽高方法offset()读取元素相对文档偏移位置position()读取元素相对父元素偏移位置scrollTop()scrollLeft()读写元素滚动条位置方法
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #1e1e1e;
+        height: 2000px;
+      }
+      main {
+        width: 400px;
+        height: 200px;
+        border: 2px lime solid;
+        box-sizing: border-box;
+        position: absolute;
+        top: 1000px;
+        left: 100px;
+        overflow: auto;
+      }
+      section {
+        width: 100%;
+        height: 800px;
+      }
+      div {
+        width: 100px;
+        height: 90px;
+        padding-top: 2px;
+        padding-left: 2px;
+        border-top: 3px red solid;
+        border-left: 3px red solid;
+        margin-top: 4px;
+        margin-left: 4px;
+      }
+      .div1 {
+        background: lightcoral;
+        box-sizing: border-box;
+      }
+      .div2 {
+        background: blueviolet;
+        box-sizing: initial;
+        position: absolute;
+        top: 30px;
+        left: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="div1">点我看滚动条位置</div>
+        <div class="div2"></div>
+      </section>
+    </main>
+    <script>
+      console.log(
+        "width:",
+        $(".div1").width(), //clientWeight-padding
+        "height:",
+        $(".div1").height(), //clientHeight-padding
+        "innerWidth:",
+        $(".div1").innerWidth(), //clientWeight
+        "innerHeight:",
+        $(".div1").innerHeight(), //clientHeight
+        "outerWidth:",
+        $(".div1").outerWidth(), //offsetWidth+margin
+        "outerHeight:",
+        $(".div1").outerHeight() //offsetHeight+margin
+      ); //width: 95 height: 85 innerWidth: 97 innerHeight: 87 outerWidth: 100 outerHeight: 90(因为是border-box,所以内容区域减去了边框和内边距,inner区域也减去了border)
+      console.log(
+        "width:",
+        $(".div2").width(),
+        "height:",
+        $(".div2").height(),
+        "innerWidth:",
+        $(".div2").innerWidth(),
+        "innerHeight:",
+        $(".div2").innerHeight(),
+        "outerWidth:",
+        $(".div2").outerWidth(),
+        "outerHeight:",
+        $(".div2").outerHeight()
+      ); //width: 100 height: 90 innerWidth: 102 innerHeight: 92 outerWidth: 105 outerHeight: 95
+      console.log($(".div2").offset()); //{top: 1036, left: 256} //outer区域(外边距开始计算)相对文档的偏移位置 ,也就是父元素偏移的1000px+父元素边框2px+自己的margin-top 4px + 原本偏移位置
+      console.log($(".div2").position()); //{top: 30, left: 150}//相对父元素的偏移位置
+      $(".div2").width(50).height(40); //修改行内式
+      $(".div1").click(function () {
+        console.log($(document).scrollTop(), $(document).scrollLeft());
+        console.log($("body").scrollTop(), $("body").scrollLeft()); //0 0
+      });
+    </script>
+  </body>
+</html>
